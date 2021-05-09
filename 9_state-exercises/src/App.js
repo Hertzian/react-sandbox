@@ -1,6 +1,6 @@
 import './App.css'
 //import CoinContainer from './components/CoinContainer'
-import Box from './components/Box'
+//import Box from './components/Box'
 import BoxContainer from './components/BoxContainer'
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
       <header className='App-header'>
         <h2>Hello</h2>
         <BoxContainer />
-        <Box />
       </header>
     </div>
   )
