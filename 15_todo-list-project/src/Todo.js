@@ -12,6 +12,16 @@ export default class Todo extends Component {
     this.handleToggle = this.handleToggle.bind(this)
   }
 
+  //componentDidUpdate(prevProps, prevState) {
+  //console.log('todo.js component did update')
+  //console.log(prevProps.todos)
+  //console.log(this.props.task)
+  //}
+
+  componentWillUnmount() {
+    console.log('in componen did unmount')
+  }
+
   handleChange(e) {
     this.setState({ task: e.target.value })
   }
