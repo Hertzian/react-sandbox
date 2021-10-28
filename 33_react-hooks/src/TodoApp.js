@@ -1,4 +1,5 @@
-import { useState } from 'react'
+//import useLocalStorageState from './hooks/useLocalStorageState'
+import useTodoState from './hooks/useTodoState'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
 import Typography from '@material-ui/core/Typography'
@@ -8,16 +9,11 @@ import ToolBar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
 
 function TodoApp() {
-  const initialTodos = [
-    { id: 1, task: 'Clean fishtank', completed: false },
-    { id: 2, task: 'Washr', completed: true },
-    { id: 3, task: 'Grow beard', completed: true }
-  ]
-  const [todos, setTodos] = useState(initialTodos)
+  const initialTodos = [{ id: 1, task: 'Pet a mokey', completed: false }]
+  const { todos, addTodo, removeTodo, toggleTodo, editTodo } =
+    useTodoState(initialTodos)
 
-  const addTodo = (newTodoText) => {
-    setTodos([...todos, { id: 4, task: newTodoText, completed: false }])
-  }
+  //const [mood, setMood] = useLocalStorageState('mood', 'happy')
 
   return (
     <Paper
@@ -37,7 +33,17 @@ function TodoApp() {
       <Grid container justify='center' style={{ marginTop: '1rem' }}>
         <Grid item xs={11} md={8} lg={4}>
           <TodoForm addTodo={addTodo} />
-          <TodoList todos={todos} />
+          <TodoList
+            todos={todos}
+            removeTodo={removeTodo}
+            toggleTodo={toggleTodo}
+            editTodo={editTodo}
+          />
+          {
+            //<button onClick={() => setMood('mamalon')}>
+            //Click to get angry
+            //</button>
+          }
         </Grid>
       </Grid>
     </Paper>
