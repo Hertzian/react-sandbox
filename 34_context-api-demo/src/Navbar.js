@@ -41,7 +41,7 @@ class Navbar extends Component {
               <span>{flag}</span>
             </IconButton>
             <Typography className={classes.title} variant='h6' color='inherit'>
-              App Titlei {language}
+              App Title {language}
             </Typography>
             <Switch onChange={toggleTheme} />
             <div className={classes.grow} />

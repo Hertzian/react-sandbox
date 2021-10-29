@@ -1,16 +1,21 @@
-import React, { Component } from "react";
-import Navbar from "./Navbar";
-import Form from "./Form";
+import React from 'react'
+import Navbar from './Navbar'
+import Form from './Form'
+import { ThemeProvider } from './contexts/ThemeContext'
+import { LanguageProvider } from './contexts/LanguageContext'
+import PageContent from './PageContent'
 
-class App extends Component {
-  render() {
-    return (
-      <>
-        <Navbar />
-        <Form />
-      </>
-    );
-  }
+function App() {
+  return (
+    <ThemeProvider>
+      <LanguageProvider>
+        <PageContent>
+          <Navbar />
+          <Form />
+        </PageContent>
+      </LanguageProvider>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
