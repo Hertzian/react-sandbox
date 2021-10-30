@@ -1,26 +1,24 @@
-import { useContext } from 'react'
 import TextField from '@material-ui/core/TextField'
+import Paper from '@material-ui/core/Paper'
 import useInputState from './hooks/useInputState'
-import { TodosContext } from './context/todos.context'
 
-function EditTodoForm({ id, task, toggleEditForm }) {
-  const { dispatch } = useContext(TodosContext)
-  const [value, handleChange, reset] = useInputState(task)
+function EditTodoForm({ addTodo }) {
+  const [value, handleChange, reset] = useInputState('')
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault()
-        dispatch({ type: 'EDIT', id, newTask: value })
+        addTodo(value)
         reset()
-        toggleEditForm()
       }}
       style={{ marginLeft: '1rem', width: '50%' }}
     >
       <TextField
-        margin='normal'
         value={value}
         onChange={handleChange}
+        label='Add new todo'
+        margin='normal'
         fullWidth
         autoFocus
       />

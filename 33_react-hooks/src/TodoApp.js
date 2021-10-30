@@ -1,4 +1,4 @@
-//import useLocalStorageState from './hooks/useLocalStorageState'
+import { useEffect } from 'react'
 import useTodoState from './hooks/useTodoState'
 import TodoList from './TodoList'
 import TodoForm from './TodoForm'
@@ -9,11 +9,13 @@ import ToolBar from '@material-ui/core/Toolbar'
 import Grid from '@material-ui/core/Grid'
 
 function TodoApp() {
-  const initialTodos = [{ id: 1, task: 'Pet a mokey', completed: false }]
+  const initialTodos = JSON.parse(window.localStorage.getItem('todos') || '[]')
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } =
     useTodoState(initialTodos)
 
-  //const [mood, setMood] = useLocalStorageState('mood', 'happy')
+  useEffect(() => {
+    window.localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   return (
     <Paper
