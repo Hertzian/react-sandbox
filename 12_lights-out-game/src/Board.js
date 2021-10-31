@@ -97,19 +97,7 @@ class Board extends Component {
     this.setState({ board, hasWon })
   }
 
-  /** Render game board or winning message. */
-
   render() {
-    if (this.state.hasWon) {
-      return <h1>You won!!!</h1>
-    }
-    // if the game is won, just show a winning msg & render nothing else
-
-    // TODO
-
-    // make table board
-
-    // TODO
     let tblBoard = []
     for (let y = 0; y < this.props.nrows; y++) {
       let row = []
@@ -127,9 +115,26 @@ class Board extends Component {
     }
 
     return (
-      <table className='Board'>
-        <tbody>{tblBoard}</tbody>
-      </table>
+      <>
+        {this.state.hasWon ? (
+          <div className='Board-title'>
+            <div className='winner'>
+              <span className='neon-orange'>You</span>
+              <span className='neon-blue'>Win!</span>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className='Board-title'>
+              <div className='neon-orange'>Lights</div>
+              <div className='neon-blue'>out</div>
+            </div>
+            <table className='Board'>
+              <tbody>{tblBoard}</tbody>
+            </table>
+          </div>
+        )}
+      </>
     )
   }
 }
